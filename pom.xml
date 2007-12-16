@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.thinkberg.moxo</groupId>
 	<artifactId>moxo</artifactId>
+	<name>Moxo</name>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>Moxo</name>
 	<description>
 		Moxo is a S3 vfs layer for commons-vfs and a simple WebDAV
 		server, that when combined can expose Amazon s3 buckets as
@@ -32,6 +32,22 @@
 			<url>http://download.java.net/maven/2/</url>
 		</repository>
 	</repositories>
+	<scm>
+		<!--  Temporarily with PerFS while 	Stian's patches 
+			are reviewed by the upstream author 
+			(and thinkberg.com is down) -->
+		<connection>
+			scm:svn:http://perfs.googlecode.com/svn/contrib/moxo/trunk/
+		</connection>
+		<developerConnection>
+			scm:svn:https://perfs.googlecode.com/svn/contrib/moxo/trunk/
+		</developerConnection>
+		<url>http://perfs.googlecode.com/svn/contrib/moxo/trunk/</url>
+	</scm>
+	<!--<scm>
+		<connection>scm:svn:http://thinkberg.com/svn/moxo</connection>
+		<url>http://thinkberg.com/svn/moxo</url>
+	</scm>-->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -124,6 +140,9 @@
 		<module>vfs-extensions</module>
 	</modules>
 	<distributionManagement>
+		<!--  Temporarily with PerFS while 	Stian's patches 
+			are reviewed by the upstream author 
+			(and thinkberg.com is down) -->
 		<repository>
 			<id>perfs-repository</id>
 			<name>PerFS repository</name>
