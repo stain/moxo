@@ -26,8 +26,14 @@ import com.thinkberg.moxo.vfs.extensions.DepthFileSelector;
  * @version $Id$
  */
 public class MoveHandler extends CopyMoveBase {
-  protected void copyOrMove(FileObject object, FileObject target, int depth) throws FileSystemException {
-    target.copyFrom(object, new DepthFileSelector(depth));
-    object.delete(new DepthFileSelector());
-  }
+	protected void copyOrMove(FileObject object, FileObject target, int depth)
+			throws FileSystemException {
+		try {
+			object.moveTo(target);
+		} catch (FileSystemException ex) {
+			ex.printStackTrace();
+			target.copyFrom(object, new DepthFileSelector(depth));
+			object.delete(new DepthFileSelector());
+		}
+	}
 }
