@@ -1,0 +1,39 @@
+Moxo S3 DAV Proxy Server
+Copyright 2007 Matthias L. Jugel. See LICENSE for details.
+http://thinkberg.com/
+
+This is a first go on two issues:
+
+a) a WebDAV server based on apache-commons-vfs
+b) an Amazon S3 provider backend for apache-commons-vfs
+
+The WebDAV server is semi-complete in a sense that it works well for most tests in the
+listmus test suite except for property handling which is virtually non-existing.
+
+The VFS backend is started and provides read-only access. I have managed to browse through
+my test backup on S3 using MacOSX own Finder DAV client.
+
+INFO:
+
+Subversion: http://thinkberg.com/svn/moxo/trunk
+
+The maven build process is not yet fully completed, so to get this running a little bit
+of tweaking is necessary, unless you use IntelliJ IDEA and maven idea:idea to create
+an IDEA project file.
+
+To run either the MoxoJettyRunner or the MoxoTest you need to include the src/main/resources
+directory in your classpath. Also copy the file moxo.template.properties and edit it to
+include your Amazon S3 access information as well as the bucket to use. Right now the bucket
+must already exist and contain files uploaded using the Uploader or Synchronize from Jets3t.
+
+Define the system property "moxo.properties" to point to your moxo.properties file:
+
+java -cp ... -Dmoxo.properties=moxo.properties com.thinkberg.moxo.MoxoJettyRunner
+
+TODO:
+
+- Create an executable JAR with all required libraries. The Main is already prepared to do
+  that but I have not yet fully understood how to get maven to package the jars right next
+  to the compiled classes.
+- Add write access to the VFS backend.
+- Much more ...
